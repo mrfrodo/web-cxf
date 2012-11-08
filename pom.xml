@@ -11,7 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cxf.version>2.2.3</cxf.version>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -75,7 +76,13 @@
 
 
     </dependencies>
-
+  <profiles>
+    <profile>
+     <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
+     <!-- Use this profile for any OpenShift specific customization your app will need. -->
+     <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
+     <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+     <id>openshift</id>
     <build>
         <finalName>web-cxf</finalName>
 
@@ -99,6 +106,7 @@
 
         </plugins>
     </build>
-
+    </profile>
+  </profiles>
 </project>
 
